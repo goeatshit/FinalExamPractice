@@ -22,10 +22,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void LogIn(View v){
-    if("Dora".equals(name)&&"Dora69@gmail.com".equals(email)&&"dora6699".equals(password)){
+    if(name.equals("Dora")&&email.equals("Dora69@gmail.com")&&password.equals("dora6699")){
         Intent intent = new Intent(this,NameConfirmPage.class);
         startActivity(intent);
-    }else if(!"Dora".equals(name)||!"Dora69@gmail.com".equals(email)||!"dora6699".equals(password)){
+    }else if(!name.equals("Dora")||!email.equals("Dora69@gmail.com")||!password.equals("dora6699")){
         finish();
     }
 }
