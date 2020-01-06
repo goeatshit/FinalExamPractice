@@ -3,11 +3,14 @@ package com.ian.finalexampractice;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 public class NamePage extends AppCompatActivity {
+    private static final String TAG = NamePage.class.getSimpleName();
     private TextView name2;
 
     @Override
@@ -19,12 +22,16 @@ public class NamePage extends AppCompatActivity {
     }
 
     public void NameLogIn(View v) {
-        boolean name2b = name2.getText().toString().equals("Dora");
-        if (name2b) {
+
+            SharedPreferences pref = getSharedPreferences("test", MODE_PRIVATE);
+            SharedPreferences.Editor editor = pref.edit();
+                    editor.putString("name", name2.getText().toString())
+                    .commit();
+            Log.d(TAG, "NameLogIn: "+name2.getText().toString());
             Intent intent = new Intent(this, EmailPage.class);
             startActivity(intent);
-        } else {
+            NamePage.this.setResult(RESULT_OK);
             finish();
         }
+
     }
-}

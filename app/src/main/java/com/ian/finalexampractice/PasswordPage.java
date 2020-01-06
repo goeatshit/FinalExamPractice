@@ -2,12 +2,15 @@ package com.ian.finalexampractice;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 
 public class PasswordPage extends AppCompatActivity {
+    private static final String TAG = PasswordPage.class.getSimpleName();
     private TextView password2;
 
 
@@ -19,12 +22,13 @@ public class PasswordPage extends AppCompatActivity {
     }
 
     public void PasswordLogIn(View v) {
-        boolean pass2b = password2.getText().toString().equals("dora6699");
-        if (pass2b) {
-            Intent intent = new Intent(this, LogInSucceedPage.class);
-            startActivity(intent);
-        } else {
+            SharedPreferences pref = getSharedPreferences("test", MODE_PRIVATE);
+            pref.edit()
+                    .putString("password", password2.getText().toString() )
+                    .commit();
+        Log.d(TAG, "PasswordLogIn: "+password2.getText().toString());
+        PasswordPage.this.setResult(RESULT_OK);
             finish();
-        }
+
     }
 }

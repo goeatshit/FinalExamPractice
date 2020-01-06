@@ -2,11 +2,14 @@ package com.ian.finalexampractice;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 public class EmailPage extends AppCompatActivity {
+    private static final String TAG = EmailPage.class.getSimpleName();
     private TextView email2;
 
     @Override
@@ -17,12 +20,15 @@ public class EmailPage extends AppCompatActivity {
     }
 
     public void EmailLogIn(View v) {
-        boolean em2b = email2.getText().toString().equals("Dora69@gmail.com");
-        if (em2b) {
+            SharedPreferences pref = getSharedPreferences("test", MODE_PRIVATE);
+            pref.edit()
+                    .putString("email", email2.getText().toString() )
+                    .commit();
+        Log.d(TAG, "EmailLogIn: "+email2.getText().toString());
             Intent intent = new Intent(this, PasswordPage.class);
             startActivity(intent);
-        } else {
+            EmailPage.this.setResult(RESULT_OK);
             finish();
-        }
+
     }
 }
