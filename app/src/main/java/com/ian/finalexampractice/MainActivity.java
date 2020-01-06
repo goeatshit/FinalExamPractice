@@ -41,25 +41,24 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-
         if (requestCode==RESQUEST_CODE){
             if (resultCode==RESULT_OK){
                 SharedPreferences pref = getSharedPreferences("test", Context.MODE_PRIVATE);
                 String a = pref.getString("name","");
                 String b = pref.getString("email","");
                 String c =pref.getString("password","");
-                Log.d(TAG, "onActivityResult: "+a+b+c);
+                Log.d(TAG, "onActivityResult: "+a+"/"+b+"/"+c);
                 name.setText(a);
                 email.setText(b);
                 password.setText(c);
+                Intent intent =new Intent(this,LogInSucceedPage.class);
+                startActivity(intent);
             }
         }
     }
+
 }
 
 
 
-  //      }else{
-   //         finish();
-   //     }
-//}
+

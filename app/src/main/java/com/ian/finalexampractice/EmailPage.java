@@ -20,9 +20,9 @@ public class EmailPage extends AppCompatActivity {
     }
 
     public void EmailLogIn(View v) {
-            SharedPreferences pref = getSharedPreferences("test", MODE_PRIVATE);
-            pref.edit()
-                    .putString("email", email2.getText().toString() )
+            SharedPreferences pref = getSharedPreferences("test", Context.MODE_PRIVATE);
+            SharePreferences.Editor editor = pref.edit();
+                    editor.putString("email", email2.getText().toString() )
                     .commit();
         Log.d(TAG, "EmailLogIn: "+email2.getText().toString());
             Intent intent = new Intent(this, PasswordPage.class);

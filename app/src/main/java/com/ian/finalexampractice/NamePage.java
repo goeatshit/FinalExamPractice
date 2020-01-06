@@ -23,7 +23,7 @@ public class NamePage extends AppCompatActivity {
 
     public void NameLogIn(View v) {
 
-            SharedPreferences pref = getSharedPreferences("test", MODE_PRIVATE);
+            SharedPreferences pref = getSharedPreferences("test", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = pref.edit();
                     editor.putString("name", name2.getText().toString())
                     .commit();

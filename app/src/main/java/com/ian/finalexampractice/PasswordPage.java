@@ -22,9 +22,9 @@ public class PasswordPage extends AppCompatActivity {
     }
 
     public void PasswordLogIn(View v) {
-            SharedPreferences pref = getSharedPreferences("test", MODE_PRIVATE);
-            pref.edit()
-                    .putString("password", password2.getText().toString() )
+            SharedPreferences pref = getSharedPreferences("test", Context.MODE_PRIVATE);
+            SharePreferences.Editor editor = pref.edit();
+                    editor.putString("password", password2.getText().toString() )
                     .commit();
         Log.d(TAG, "PasswordLogIn: "+password2.getText().toString());
         PasswordPage.this.setResult(RESULT_OK);
