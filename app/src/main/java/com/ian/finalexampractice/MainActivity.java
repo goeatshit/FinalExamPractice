@@ -21,12 +21,16 @@ public class MainActivity extends AppCompatActivity {
         password = findViewById(R.id.Password);
     }
 
-    public void LogIn(View v){
-    if(name.equals("Dora")&&email.equals("Dora69@gmail.com")&&password.equals("dora6699")){
-        Intent intent = new Intent(this,NameConfirmPage.class);
-        startActivity(intent);
-    }else if(!name.equals("Dora")||!email.equals("Dora69@gmail.com")||!password.equals("dora6699")){
-        finish();
-    }
+    public void login(View v){
+        boolean nameb=name.getText().toString().equals("Dora");
+        boolean emb =email.getText().toString().equals("Dora69@gmail.com");
+        boolean passb = password.getText().toString().equals("dora6699");
+        if(nameb&&emb&&passb){
+            Intent intent = new Intent(this,NamePage.class);
+            startActivity(intent);
+
+        }else{
+            finish();
+        }
 }
 }

@@ -7,24 +7,24 @@ import android.view.View;
 import android.widget.TextView;
 
 
-public class PasswordConfirmPage extends AppCompatActivity {
+public class PasswordPage extends AppCompatActivity {
     private TextView password2;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.password_main);
+        setContentView(R.layout.activity_password_page);
         password2 = findViewById(R.id.Password2);
     }
-    public void PasswordLogIn(View v){
-        if(password2.equals("dora6699")){
-            Intent intent = new Intent(this,LogInSucceed.class);
+
+    public void PasswordLogIn(View v) {
+        boolean pass2b = password2.getText().toString().equals("dora6699");
+        if (pass2b) {
+            Intent intent = new Intent(this, LogInSucceedPage.class);
             startActivity(intent);
-        }else if(!password2.equals("dora6699")){
+        } else {
             finish();
         }
     }
-
-
 }

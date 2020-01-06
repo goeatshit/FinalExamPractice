@@ -9,6 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".LogInSucceedPage"></activity>
+        <activity android:name=".PasswordPage" />
+        <activity android:name=".EmailPage" />
+        <activity android:name=".NamePage" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
