@@ -17,6 +17,9 @@ public class MainActivity extends AppCompatActivity {
     private TextView name;
     private TextView email;
     private TextView password;
+    private String a;
+    private String b;
+    private String c;
 
 
     @Override
@@ -30,13 +33,26 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void login(View v) {
+        Log.d(TAG, "login: ");
         //     boolean nameb = name.getText().toString().equals("Dora");
         //     boolean emb = email.getText().toString().equals("Dora69@gmail.com");
         //    boolean passb = password.getText().toString().equals("dora6699");
-        if (name.getText().toString().equals("") && email.getText().toString().equals("") && password.getText().toString().equals("")) {
+        String n = name.getText().toString();
+        String e = email.getText().toString();
+        String p = password.getText().toString();
+        Log.d("Ding", "login: "+n+","+e+","+p+","+a+","+b+","+c);
+
+        if (n.equals("") && e.equals("") && p.equals("")) {
             Intent intent = new Intent(this, NamePage.class);
             startActivityForResult(intent, RESQUEST_CODE);
+        }else{
+            Intent intent = new Intent(this, LogInSucceedPage.class);
+            startActivity(intent);
+
+            Log.d("Ding", "login: "+n+","+e+","+p+","+a+","+b+","+c);
+
         }
+
     }
 
     @Override
@@ -44,15 +60,14 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode==RESQUEST_CODE){
             if (resultCode==RESULT_OK){
                 SharedPreferences pref = getSharedPreferences("test", Context.MODE_PRIVATE);
-                String a = pref.getString("name","");
-                String b = pref.getString("email","");
-                String c =pref.getString("password","");
-                Log.d(TAG, "onActivityResult: "+a+"/"+b+"/"+c);
+                a = pref.getString("name","");
+                b = pref.getString("email","");
+                c = pref.getString("password","");
+                Log.d(TAG, "onActivityResult: "+ a +"/"+ b +"/"+ c);
                 name.setText(a);
                 email.setText(b);
                 password.setText(c);
-                Intent intent =new Intent(this,LogInSucceedPage.class);
-                startActivity(intent);
+
             }
         }
     }

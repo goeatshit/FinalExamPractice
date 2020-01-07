@@ -1,6 +1,8 @@
 package com.ian.finalexampractice;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -23,7 +25,7 @@ public class PasswordPage extends AppCompatActivity {
 
     public void PasswordLogIn(View v) {
             SharedPreferences pref = getSharedPreferences("test", Context.MODE_PRIVATE);
-            SharePreferences.Editor editor = pref.edit();
+            SharedPreferences.Editor editor = pref.edit();
                     editor.putString("password", password2.getText().toString() )
                     .commit();
         Log.d(TAG, "PasswordLogIn: "+password2.getText().toString());

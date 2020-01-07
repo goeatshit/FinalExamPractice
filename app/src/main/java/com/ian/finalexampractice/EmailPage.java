@@ -1,6 +1,8 @@
 package com.ian.finalexampractice;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -21,7 +23,7 @@ public class EmailPage extends AppCompatActivity {
 
     public void EmailLogIn(View v) {
             SharedPreferences pref = getSharedPreferences("test", Context.MODE_PRIVATE);
-            SharePreferences.Editor editor = pref.edit();
+            SharedPreferences.Editor editor = pref.edit();
                     editor.putString("email", email2.getText().toString() )
                     .commit();
         Log.d(TAG, "EmailLogIn: "+email2.getText().toString());
